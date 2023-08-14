@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Formulário de Cadastro</h1>
+      <div class="form">
+        <form>
+          <input
+            name="nome"
+            type="text"
+            placeholder="Nome Completo"
+            id="Nome"
+          />
+          <input name="email" type="email" placeholder="E-mail" id="email" />
+          <input
+            name="telefone"
+            type="tel"
+            placeholder="Telefone"
+            id="telefone"
+          />
+          <input name="cpf" type="text" placeholder="CPF" id="cpf" />
+          <input
+            name="endereco"
+            type="text"
+            placeholder="Endereço Completo"
+            id="endereco"
+          />
+          <input name="cep" type="text" placeholder="CEP" id="cep" />
+          <button type="submit" id="btn">CADASTRAR</button>
+        </form>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script src="js/jquery.mask.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/messages_pt_BR.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#telefone").mask("(00) 00000-0000");
+        $("#cpf").mask("000.000.000-00", { reverse: true });
+        $("#cep").mask("00000-000");
+        $("form").validate({
+          rules: {
+            nome: {
+              required: true,
+            },
+            email: {
+              required: true,
+              email: true,
+            },
+            telefone: {
+              required: true,
+            },
+            cpf: {
+              required: true,
+            },
+            endereco: {
+              required: true,
+            },
+            cep: {
+              required: true,
+            },
+          },
+          messages: {
+            nome: "Por favor, insira o seu nome",
+            email: "Por favor, insira o seu e-mail",
+            telefone: "Por favor, insira o seu telefone",
+            cpf: "Por favor, insira o seu CPF",
+            endereco: "Por favor, insira o seu endereço completo",
+            cep: "Por favor, insira o seu CEP",
+          },
+          submitHandler: function (form) {
+            console.log(form);
+            alert("Formulário Preenchido com Sucesso!");
+          },
+          invalidHandler: function (evento, validador) {
+            let camposIncorretos = validador.numberOfInvalids();
+            if (camposIncorretos) {
+              alert(`Existem ${camposIncorretos} campos incorretos`);
+            }
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
