@@ -1,5 +1,4 @@
 function somar(a, b) {
   return a + b;
 }
-
-module.exports = somar;
+console.log(20, 30);
